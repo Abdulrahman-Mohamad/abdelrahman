@@ -1,6 +1,6 @@
 import { ChevronDown, Star } from "lucide-react";
 import Fadein from "../animations/Fadein";
-// import RadialGradientBackground from "../backgrounds/RadialGradientBackground";
+import RadialGradientBackground from "../backgrounds/RadialGradientBackground";
 import { PERSONAL_INFO, STATS } from "../../utils/constants";
 import { scrollToSection } from "../../hooks/useScrollSpy";
 import {
@@ -15,7 +15,7 @@ const Hero = () => {
   return (
     <>
       <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
-        {/* <RadialGradientBackground varient="hero" /> */}
+        <RadialGradientBackground variant="hero" />
         {/* Content Container */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -113,11 +113,11 @@ const Hero = () => {
           </div>
         </div>
         {/* Scroll Indecator */}
-        <button 
-        onClick={() => scrollToSection("about")}
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer z-20"
+        <button
+          onClick={() => scrollToSection("about")}
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer z-20"
         >
-          <ChevronDown className="size-8 text-primary"/>
+          <ChevronDown className="size-8 text-primary" />
         </button>
       </section>
     </>
