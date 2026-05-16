@@ -1,8 +1,16 @@
 import { useEffect, useRef, useState } from "react";
+import type { ReactNode } from "react";
 
-const Fadein = ({ children, delay = 0, duration = 500, threshold = 0.1 }) => {
+interface FadeinProps {
+  children: ReactNode;
+  delay?: number;
+  duration?: number;
+  threshold?: number;
+}
+
+const Fadein = ({ children, delay = 0, duration = 500, threshold = 0.1 }: FadeinProps) => {
   const [isVisable, setisVisable] = useState(false);
-  const elementRef = useRef(null);
+  const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(

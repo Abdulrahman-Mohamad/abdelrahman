@@ -1,4 +1,4 @@
-import { Star } from "lucide-react";
+import { ChevronDown, Star } from "lucide-react";
 import Fadein from "../animations/Fadein";
 // import RadialGradientBackground from "../backgrounds/RadialGradientBackground";
 import { PERSONAL_INFO, STATS } from "../../utils/constants";
@@ -112,6 +112,13 @@ const Hero = () => {
             </Fadein>
           </div>
         </div>
+        {/* Scroll Indecator */}
+        <button 
+        onClick={() => scrollToSection("about")}
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer z-20"
+        >
+          <ChevronDown className="size-8 text-primary"/>
+        </button>
       </section>
     </>
   );
