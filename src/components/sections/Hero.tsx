@@ -1,8 +1,15 @@
 import { Star } from "lucide-react";
 import Fadein from "../animations/Fadein";
-import RadialGradientBackground from "../backgrounds/RadialGradientBackground";
+// import RadialGradientBackground from "../backgrounds/RadialGradientBackground";
 import { PERSONAL_INFO, STATS } from "../../utils/constants";
 import { scrollToSection } from "../../hooks/useScrollSpy";
+import {
+  SiMongodb,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiReact,
+  SiTailwindcss,
+} from "react-icons/si";
 
 const Hero = () => {
   return (
@@ -39,20 +46,70 @@ const Hero = () => {
                   className="inline-flex items-center gap-0 mb-12 group hover:cursor-pointer"
                 >
                   <div className="relative z-10 bg-white hover:bg-white/90 transition-colors duration-300 text-[#212121] rounded-[17px] px-[26px] py-[13px] text-base font-medium border border-white">
-                    Get in Touch</div>
+                    Get in Touch
+                  </div>
                 </button>
               </Fadein>
               <Fadein delay={400}>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-12 max-w-full">
                   {STATS.map((stat, index) => (
-                    <div key={index} className="text-start border-r border-white/50 pe-10 last:border-r-0">
-                      <div className="text-2xl font-normal text-primary mb-[8px] font-mono">{stat.value}</div>
-                      <p className="text-sm text-white leading-snug">{stat.label}</p>
+                    <div
+                      key={index}
+                      className="text-start border-r border-white/50 pe-10 last:md:border-r-0"
+                    >
+                      <div className="text-2xl font-normal text-primary mb-[8px] font-mono">
+                        {stat.value}
+                      </div>
+                      <p className="text-sm text-white leading-snug">
+                        {stat.label}
+                      </p>
                     </div>
                   ))}
                 </div>
               </Fadein>
             </div>
+
+            {/* Right Column - Developer Image */}
+            <Fadein delay={200}>
+              <div className="relative">
+                <div className="relative overflow-hidden rounded-2xl aspect-4/5 max-w-[500px] ms-auto group">
+                  <div className="absolute inset-0 rounded-2xl overflow-hidden">
+                    <div className="absolute inset-[-2px] bg-linear-to-r from-primary/20 via-primary/10 to-primary animate-spin-slow rounded-2xl"></div>
+                  </div>
+                  {/* Image Container */}
+                  <div className="relative rounded-2xl overflow-hidden m-px h-[calc(100%-2px)]">
+                    <img
+                      src="/public/developer-portrait.jpeg"
+                      alt="AbdelRahman at work"
+                      className="size-full object-cover"
+                    />
+                  </div>
+
+                  {/* Technology Logos */}
+                  <div className="absolute bottom-6 left-6 z-20">
+                    <Fadein delay={500}>
+                      <div className="flex items-center gap-4 bg-black/40 backdrop-blur-sm border border-white/10 rounded-full px-6 py-3">
+                        <div className="size-6 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                          <SiReact className="size-full text-primary" />
+                        </div>
+                        <div className="size-6 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                          <SiNextdotjs className="size-full text-primary" />
+                        </div>
+                        <div className="size-6 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                          <SiNodedotjs className="size-full text-primary" />
+                        </div>
+                        <div className="size-6 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                          <SiTailwindcss className="size-full text-primary" />
+                        </div>
+                        <div className="size-6 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                          <SiMongodb className="size-full text-primary" />
+                        </div>
+                      </div>
+                    </Fadein>
+                  </div>
+                </div>
+              </div>
+            </Fadein>
           </div>
         </div>
       </section>
