@@ -1,5 +1,28 @@
-const RadialGradientBackground = ({ variant = "hero", gradients = [] }) => {
-  const variants = {
+import React from "react";
+
+interface ColorStop {
+  color: string;
+  stop: string;
+}
+
+interface GradientConfig {
+  position: string;
+  size: string;
+  colors: ColorStop[];
+  blur: string;
+  opacity: number;
+}
+
+interface RadialGradientBackgroundProps {
+  variant?: "hero" | "about" | "custom";
+  gradients?: GradientConfig[];
+}
+
+const RadialGradientBackground: React.FC<RadialGradientBackgroundProps> = ({ 
+  variant = "hero", 
+  gradients = [] 
+}) => {
+  const variants: Record<string, GradientConfig[]> = {
     hero: [
       {
         position: "top-1 start-1 -translate-x-1/2 -translate-y-1/2",
@@ -61,7 +84,7 @@ const RadialGradientBackground = ({ variant = "hero", gradients = [] }) => {
   const activeGradient =
     variant === "custom" ? gradients : variants[variant] || variants.hero;
 
-  const generateGradient = (colors) => {
+  const generateGradient = (colors: ColorStop[]) => {
     const colorStops = colors
       .map(({ color, stop }) => `${color} ${stop}`)
       .join(", ");
