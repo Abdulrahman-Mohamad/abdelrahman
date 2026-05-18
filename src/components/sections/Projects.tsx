@@ -1,8 +1,15 @@
 import React, { useRef, useState } from "react";
 import { categories, projects } from "../../data/projects";
+import { motion } from "framer-motion";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import type { Swiper as SwiperType } from 'swiper';
+import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import {
   Briefcase,
-  ChevronLast,
+  ChevronLeft,
   ChevronRight,
   Globe,
   Palette,
@@ -14,8 +21,7 @@ import ProjectCard from "../ui/ProjectCard";
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const scrollContainerRef = useRef(null);
+  const swiperRef = useRef<SwiperType | null>(null);
 
   const filterdProjects =
     activeCategory === "All"
@@ -23,35 +29,11 @@ const Projects = () => {
       : projects.filter((project) => project.category === activeCategory);
 
   // Reset carousel when category chages
-  const handleCategoryChange = (category) => {
+  const handleCategoryChange = (category: string) => {
     setActiveCategory(category);
-    setCurrentIndex(0);
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollTo({ left: 0, behavior: "smooth" });
+    if (swiperRef.current) {
+      swiperRef.current.slideTo(0);
     }
-  };
-
-  const scrollToIndex = (index) => {
-    setCurrentIndex(index);
-    if (scrollContainerRef) {
-      const container = scrollContainerRef.current;
-      const cardWidth = container.offsetWidth / 3;
-      container.scrollTo({
-        left: cardWidth + index,
-        behavior: "smooth",
-      });
-    }
-  };
-
-  const nextSlide = () => {
-    const maxIndex = Math.max(0, filterdProjects.length - 3);
-    const newIndex = Math.min(currentIndex + 1, maxIndex);
-    scrollToIndex(newIndex);
-  };
-
-  const prevSlide = () => {
-    const newIndex = Math.max(currentIndex - 1, 0);
-    scrollToIndex(newIndex);
   };
 
   // Category icons mapping
@@ -105,8 +87,8 @@ const Projects = () => {
                     className={`absolute inset-0 rounded-full transition-all duration-300 ${activeCategory === category ? "bg-primary/10 opacity-100" : "bg-white/5 border border-white/10 group-hover:bg-white/10"}`}
                   />
                   <div className="relative flex items-center gap-2">
-                    {React.createElement(categoryIcons[category], {
-                      calssName: "size-4",
+                    {React.createElement(categoryIcons[category as keyof typeof categoryIcons], {
+                      className: "size-4",
                     })}
                     <span className="text-sm">{category}</span>
                   </div>
@@ -120,54 +102,63 @@ const Projects = () => {
           {/* Projects Carousel */}
           <Fadein delay={200}>
             <div className="relative">
-              <div ref={scrollContainerRef} className="overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar">
-                <div className="flex gap-6 pb-4">
-                  {filterdProjects.map((project, index) => (
-                    <div key={project.id} className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] shrink-0 snap-start">
+              <Swiper
+                modules={[Navigation, Pagination]}
+                spaceBetween={24}
+                slidesPerView={1}
+                onSwiper={(swiper) => (swiperRef.current = swiper)}
+                navigation={{
+                  nextEl: '.swiper-button-next-custom',
+                  prevEl: '.swiper-button-prev-custom',
+                }}
+                pagination={{
+                  el: '.swiper-pagination-custom',
+                  clickable: true,
+                  bulletClass: 'transition-all duration-300 rounded-full bg-white/30 size-2 hover:bg-white/50 cursor-pointer inline-block',
+                  bulletActiveClass: 'bg-primary! w-6!'
+                }}
+                breakpoints={{
+                  768: {
+                    slidesPerView: 2,
+                  },
+                  1024: {
+                    slidesPerView: 3,
+                  },
+                }}
+                className="pb-4!"
+              >
+                {filterdProjects.map((project) => (
+                  <SwiperSlide key={project.id} className="h-auto">
+                    <motion.div 
+                      layout
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.3 }}
+                      className="h-full"
+                    >
                       <ProjectCard project={project} />
-                    </div>
-                  ))}
-                </div>
-              </div>
+                    </motion.div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
 
               {/* Navigation Arrows */}
-              {filterdProjects.length > 3 && (
-                <>
-                  <button
-                    onClick={prevSlide}
-                    disabled={currentIndex === 0}
-                    className="flex absolute inset-s-0 top-1/2 -translate-y-1/2 -translate-x-2 lg:-translate-x-4 items-center justify-center size-10 lg:size-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed z-10 hover:cursor-pointer"
-                    aria-label="Previous projects"
-                  >
-                    <ChevronLast className="size-6 text-white" />
-                  </button>
+              <button
+                className="swiper-button-prev-custom flex absolute inset-s-0 top-1/2 -translate-y-1/2 -translate-x-2 lg:-translate-x-4 items-center justify-center size-10 lg:size-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 [&.swiper-button-disabled]:opacity-50 [&.swiper-button-disabled]:cursor-not-allowed z-10 cursor-pointer"
+                aria-label="Previous projects"
+              >
+                <ChevronLeft className="size-6 text-white" />
+              </button>
 
-                  <button
-                    onClick={nextSlide}
-                    disabled={currentIndex >= filterdProjects.length - 3}
-                    className="flex absolute inset-e-0 top-1/2 -translate-y-1/2 -translate-x-2 lg:-translate-x-4 items-center justify-center size-10 lg:size-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed z-10 hover:cursor-pointer"
-                    aria-label="Next projects"
-                  >
-                    <ChevronRight className="size-6 text-white" />
-                  </button>
-                </>
-              )}
+              <button
+                className="swiper-button-next-custom flex absolute inset-e-0 top-1/2 -translate-y-1/2 translate-x-2 lg:translate-x-4 items-center justify-center size-10 lg:size-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 [&.swiper-button-disabled]:opacity-50 [&.swiper-button-disabled]:cursor-not-allowed z-10 cursor-pointer"
+                aria-label="Next projects"
+              >
+                <ChevronRight className="size-6 text-white" />
+              </button>
 
               {/* Navigation Dots */}
-              {filterdProjects.length > 3 && (
-                <div className="flex items-center justify-center gap-2 mt-8">
-                  {Array.from({
-                    length: Math.max(0, filterdProjects.length - 2),
-                  }).map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => scrollToIndex(index)}
-                      className={`transition-all duration-300 rounded-full ${index === currentIndex ? "bg-primary w-6 h-2" : "bg-white/30 size-2 hover:bg-white/50"}`}
-                      aria-label={`Go to slide ${index + 1}`}
-                    ></button>
-                  ))}
-                </div>
-              )}
+              <div className="swiper-pagination-custom flex items-center justify-center gap-2 mt-8"></div>
             </div>
           </Fadein>
         </div>
