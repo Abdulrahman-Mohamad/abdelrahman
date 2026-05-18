@@ -90,7 +90,7 @@ const Skills = () => {
 
                     {/* Skills List */}
                     <div className="">
-                      {categorySkills.map((skill, skillIndex) => {
+                      {categorySkills.map((skill) => {
                         const IconComponent = Icons[skill.icon] || Icons.Code2;
                         const proficiency = getProficencyLevel(skill.level);
                         return (
