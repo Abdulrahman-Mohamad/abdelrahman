@@ -1,12 +1,12 @@
 import React, { useRef, useState } from "react";
 import { categories, projects } from "../../data/projects";
 import { motion } from "framer-motion";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import type { Swiper as SwiperType } from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperType } from "swiper";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import {
   Briefcase,
   ChevronLeft,
@@ -87,13 +87,18 @@ const Projects = () => {
                     className={`absolute inset-0 rounded-full transition-all duration-300 ${activeCategory === category ? "bg-primary/10 opacity-100" : "bg-white/5 border border-white/10 group-hover:bg-white/10"}`}
                   />
                   <div className="relative flex items-center gap-2">
-                    {React.createElement(categoryIcons[category as keyof typeof categoryIcons], {
-                      className: "size-4",
-                    })}
+                    {React.createElement(
+                      categoryIcons[category as keyof typeof categoryIcons],
+                      {
+                        className: "size-4",
+                      },
+                    )}
                     <span className="text-sm">{category}</span>
                   </div>
 
-                  {activeCategory === category && <div className="absolute inset-0 rounded-full bg-primary blur-xl opacity-50 -z-10" />}
+                  {activeCategory === category && (
+                    <div className="absolute inset-0 rounded-full bg-primary blur-xl opacity-50 -z-10" />
+                  )}
                 </button>
               ))}
             </div>
@@ -108,14 +113,15 @@ const Projects = () => {
                 slidesPerView={1}
                 onSwiper={(swiper) => (swiperRef.current = swiper)}
                 navigation={{
-                  nextEl: '.swiper-button-next-custom',
-                  prevEl: '.swiper-button-prev-custom',
+                  nextEl: ".swiper-button-next-custom",
+                  prevEl: ".swiper-button-prev-custom",
                 }}
                 pagination={{
-                  el: '.swiper-pagination-custom',
+                  el: ".swiper-pagination-custom",
                   clickable: true,
-                  bulletClass: 'transition-all duration-300 rounded-full bg-white/30 size-2 hover:bg-white/50 cursor-pointer inline-block',
-                  bulletActiveClass: 'bg-primary! w-6!'
+                  bulletClass:
+                    "transition-all duration-300 rounded-full bg-white/30 size-2 hover:bg-white/50 cursor-pointer inline-block",
+                  bulletActiveClass: "bg-primary! w-6!",
                 }}
                 breakpoints={{
                   768: {
@@ -129,7 +135,7 @@ const Projects = () => {
               >
                 {filterdProjects.map((project) => (
                   <SwiperSlide key={project.id} className="h-auto">
-                    <motion.div 
+                    <motion.div
                       layout
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
