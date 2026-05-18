@@ -42,7 +42,7 @@ const Services = () => {
                 Built for innovation. Designed for results.
               </h2>
               <p className="text-lg text-white/60 max-w-xl mx-auto">
-                Comperhansive solutions to transform your ideas into exceptional
+                Comprehensive solutions to transform your ideas into exceptional
                 digital experiences.
               </p>
             </div>
@@ -50,52 +50,48 @@ const Services = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
             {services.slice(0, 2).map((service, index) => {
-              const IconComponent = Icons[service.icon] || Icons.Code2;
+              const IconComponent = (Icons[service.icon as keyof typeof Icons] as React.ElementType) || Icons.Code2;
               return (
-                <>
-                  <Fadein key={service.id} delay={100 + index * 100}>
-                    <div className="group relative bg-white/5 border border-white/10 rounded-3xl p-8 hover:border-primary/30 transition-all duration-300 h-full min-h-[280px] flex flex-col">
-                      <div className="mb-6">
-                        <div className="size-16 rounded-2xl bg-primary/20 border border-primary/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                          <IconComponent className="size-8 text-primary" />
-                        </div>
+                <Fadein key={service.id} delay={100 + index * 100}>
+                  <div className="group relative bg-white/5 border border-white/10 rounded-3xl p-8 hover:border-primary/30 transition-all duration-300 h-full min-h-[280px] flex flex-col">
+                    <div className="mb-6">
+                      <div className="size-16 rounded-2xl bg-primary/20 border border-primary/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <IconComponent className="size-8 text-primary" />
                       </div>
-
-                      <div className="flex-1">
-                        <h3 className="text-2xl font-semibold text-white mb-3 group-hover:text-primary transition-colors duration-300">
-                          {service.title}
-                        </h3>
-                        <p className="text-white/60 leading-relaxed">
-                          {service.description}
-                        </p>
-                      </div>
-                      <div className="absolute inset-0 bg-linear-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/5 rounded-3xl transition-all duration-300 pointer-events-none" />
                     </div>
-                  </Fadein>
-                </>
+
+                    <div className="flex-1">
+                      <h3 className="text-2xl font-semibold text-white mb-3 group-hover:text-primary transition-colors duration-300">
+                        {service.title}
+                      </h3>
+                      <p className="text-white/60 leading-relaxed">
+                        {service.description}
+                      </p>
+                    </div>
+                    <div className="absolute inset-0 bg-linear-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/5 rounded-3xl transition-all duration-300 pointer-events-none" />
+                  </div>
+                </Fadein>
               );
             })}
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.slice(2).map((service, index) => {
-              const IconComponent = Icons[service.icon] || Icons.Code2;
+              const IconComponent = (Icons[service.icon as keyof typeof Icons] as React.ElementType) || Icons.Code2;
               return (
-                <>
-                  <Fadein key={service.id} delay={300 + index * 100}>
-                    <div className="group relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 h-full">
-                      <div className="mb-4">
-                        <div className="size-12 rounded-xl bg-primary/20 border border-primary/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 ">
-                          <IconComponent className="size-6 text-primary" />
-                        </div>
+                <Fadein key={service.id} delay={300 + index * 100}>
+                  <div className="group relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 h-full">
+                    <div className="mb-4">
+                      <div className="size-12 rounded-xl bg-primary/20 border border-primary/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 ">
+                        <IconComponent className="size-6 text-primary" />
                       </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-[#A8FF8D] transition-colors duration-300">{service.title}</h3>
-                        <p className="text-sm text-white/60 leading-relaxed line-clamp-3">{service.description}</p>
-                      </div>
-                      <div className="absolute inset-0 bg-linear-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/5 rounded-2xl transition-all duration-300 pointer-events-none" />
                     </div>
-                  </Fadein>
-                </>
+                    <div>
+                      <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-[#A8FF8D] transition-colors duration-300">{service.title}</h3>
+                      <p className="text-sm text-white/60 leading-relaxed line-clamp-3">{service.description}</p>
+                    </div>
+                    <div className="absolute inset-0 bg-linear-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/5 rounded-2xl transition-all duration-300 pointer-events-none" />
+                  </div>
+                </Fadein>
               );
             })}
           </div>
