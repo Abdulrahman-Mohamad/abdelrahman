@@ -1,7 +1,7 @@
 
 type Category = "Web Apps" | "UI Components" | "Full Stack"
 
-interface Project {
+export interface Project {
   id: number,
   title: string,
   description: string,
@@ -9,21 +9,21 @@ interface Project {
   category: Category,
   technologies: string[],
   metrics?: string,
-  demourl: string,
+  demoUrl: string,
   githubUrl?: string
 }
 
 export const projects: Project[] = [
   {
     id: 1,
-    title: "E-commerce",
-    description: "E-commerce description",
-    image: "image/url.png",
+    title: "Frutera",
+    description: "Frutera description",
+    image: "public/projects/frutera.png",
     category: "Web Apps",
-    technologies: ["react", "tailwind.css"],
-    metrics: "Amaizing e commerce applications",
-    demourl: "https://link.com",
-    githubUrl: "https://github.com/projectId"
+    technologies: ["Next", "tailwind.css"],
+    metrics: "Fresh Egyptian Fruits & Vegetables Exported Worldwide",
+    demoUrl: "https://frutera-farms.com/",
+    githubUrl: null
   }
 ]
 
