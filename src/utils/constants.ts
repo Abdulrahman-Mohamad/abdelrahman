@@ -13,9 +13,8 @@ export const PERSONAL_INFO = {
 }
 
 export const SOCIAL_LINKS = {
-  github: "https://github.com/Abdulrahman-Mohamad",
+  gitHub: "https://github.com/Abdulrahman-Mohamad",
   linkedin: "https://www.linkedin.com/in/abdulrahman-mohamad-0578bb192/",
-  twitter: "https://x.com/AbdulRahma97784",
   whatsapp: "https://wa.me/201013977924"
 }
 
