@@ -80,7 +80,7 @@ export const skills: Skill[] = [
   {
     id: 11,
     name: "Figma",
-    icon: "Figma",
+    icon: "SwatchBook",
     level: "Intermediate",
     experience: "4+ years"
   },

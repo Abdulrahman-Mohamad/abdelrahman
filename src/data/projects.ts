@@ -52,7 +52,7 @@ export const projects: Project[] = [
     title: "AI Resume Analyzer",
     description: "An AI-powered resume analyzer providing instant feedback to improve your CV.",
     image: "/projects/ai-resume-analyzer.png",
-    category: "Web Apps",
+    category: "Full Stack",
     technologies: ["React Router", "TailwindCSS", "JavaScript", "GSAP", "Puter"],
     metrics: "AI-powered Insights for Interview Success",
     demoUrl: "https://ai-resume-analyzer-one-gold.vercel.app/",
