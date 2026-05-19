@@ -1,11 +1,19 @@
 import { useScrollReveal } from "../../hooks/useScrollReveal";
+import type { ReactNode } from "react";
 
-const ScrollReveal = (
+interface ScrollRevealProps {
+  children: ReactNode;
+  animation?: "fadeUp" | "fadeIn" | "slideLeft" | "slideRight" | "scaleIn";
+  delay?: number;
+  duration?: number;
+}
+
+const ScrollReveal = ({
   children,
   animation = "fadeUp",
   delay = 0,
   duration = 700,
-) => {
+}: ScrollRevealProps) => {
   const { ref, isVisiable } = useScrollReveal({ threshold: 0.1 });
   const animationClasses = {
     fadeUp: "opacity-0 translate-y-8",

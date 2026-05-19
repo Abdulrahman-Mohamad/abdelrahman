@@ -248,7 +248,7 @@ const Contact = () => {
                     {Object.entries(SOCIAL_LINKS)
                       .slice(0, 3)
                       .map(([platform, url]) => {
-                        const Icon = socialIcons[platform];
+                        const Icon = socialIcons[platform as keyof typeof socialIcons];
                         return Icon ? (
                           <a
                             key={platform}

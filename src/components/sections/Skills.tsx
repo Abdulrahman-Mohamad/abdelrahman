@@ -1,4 +1,5 @@
 import * as Icons from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { skills } from "../../data/skills";
 import Fadein from "../animations/Fadein";
 
@@ -12,19 +13,19 @@ const Skills = () => {
       skills.find((s) => s.name === "Next.js"),
       skills.find((s) => s.name === "Tailwind CSS"),
       skills.find((s) => s.name === "Redux"),
-    ].filter(Boolean),
+    ].filter(Boolean) as typeof skills,
 
     "Backend & APIs": [
       skills.find((s) => s.name === "Node.js"),
       skills.find((s) => s.name === "REST APIs"),
-    ].filter(Boolean),
+    ].filter(Boolean) as typeof skills,
 
     "Tools & Others": [
       skills.find((s) => s.name === "Git & GitHub"),
       skills.find((s) => s.name === "Responsive Design"),
       skills.find((s) => s.name === "Figma"),
       skills.find((s) => s.name === "Vite"),
-    ].filter(Boolean),
+    ].filter(Boolean) as typeof skills,
   };
   // Get Proficiency percentage
   const getProficencyLevel = (level: string) => {
@@ -91,7 +92,7 @@ const Skills = () => {
                     {/* Skills List */}
                     <div className="">
                       {categorySkills.map((skill) => {
-                        const IconComponent = Icons[skill.icon] || Icons.Code2;
+                        const IconComponent = (Icons[skill.icon as keyof typeof Icons] || Icons.Code2) as LucideIcon;
                         const proficiency = getProficencyLevel(skill.level);
                         return (
                           <>
