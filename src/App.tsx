@@ -1,3 +1,4 @@
+import Footer from "./components/layout/Footer";
 import Navbar from "./components/layout/Navbar";
 import About from "./components/sections/About";
 import Contact from "./components/sections/Contact";
@@ -10,7 +11,7 @@ import Testimonials from "./components/sections/Testimonials";
 const App = () => {
   return (
     <>
-      <div className="min-h-screen bg-black pb-[100vh]">
+      <div className="min-h-screen bg-black">
         <Navbar />
         <main>
           <Hero />
@@ -21,6 +22,7 @@ const App = () => {
           <Testimonials/>
           <Contact/>
         </main>
+        <Footer/>
       </div>
     </>
   );
