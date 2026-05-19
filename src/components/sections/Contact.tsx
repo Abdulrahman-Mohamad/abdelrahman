@@ -1,4 +1,5 @@
 import { useState } from "react";
+import type { ChangeEvent, SyntheticEvent } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
 import Fadein from "../animations/Fadein";
@@ -12,15 +13,16 @@ const Contact = () => {
     message: "",
   });
   const [status, setStatus] = useState({ type: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!formData.name || !formData.email || !formData.message) {
@@ -34,13 +36,45 @@ const Contact = () => {
       return;
     }
 
-    setStatus({
-      type: "success",
-      message: "Message sent siccessfully I'll get back to you soon.",
-    });
-    setFormData({ name: "", email: "", message: "" });
+    setIsSubmitting(true);
+    setStatus({ type: "", message: "" });
 
-    setTimeout(() => setStatus({ type: "", message: "" }), 5000);
+    try {
+      const submissionData = new FormData();
+      submissionData.append("access_key", "9895ba8f-46e0-4e7a-a8c0-1ed0e397ed1a");
+      submissionData.append("from_name", "YourPortfolio");
+      submissionData.append("name", formData.name);
+      submissionData.append("email", formData.email);
+      submissionData.append("message", formData.message);
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: submissionData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus({
+          type: "success",
+          message: "Message sent successfully! I'll get back to you soon.",
+        });
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setStatus({
+          type: "error",
+          message: data.message || "Something went wrong. Please try again later.",
+        });
+      }
+    } catch (error) {
+      setStatus({
+        type: "error",
+        message: "Network error occurred. Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setStatus({ type: "", message: "" }), 5000);
+    }
   };
 
   const socialIcons = {
@@ -137,10 +171,13 @@ const Contact = () => {
 
                   <button
                     type="submit"
-                    className="w-full px-6 py-3 bg-linear-to-r from-primary/10 to-primary text-white font-medium rounded-xl hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center gap-2 group"
+                    disabled={isSubmitting}
+                    className="w-full px-6 py-3 bg-linear-to-r from-primary/10 to-primary text-white font-medium rounded-xl hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed hover:cursor-pointer"
                   >
-                    <span>Send Message</span>
-                    <Send className="size-5 group-hover:translate-x-1 transition-transform duration-300" />
+                    <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
+                    {!isSubmitting && (
+                      <Send className="size-5 group-hover:translate-x-1 transition-transform duration-300" />
+                    )}
                   </button>
 
                   {status.message && (
