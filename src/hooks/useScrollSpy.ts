@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { animate } from "framer-motion";
 
 export const useScrollSpy = (sectionIds: string[], offset: number = 100) => {
   const [activeSection, setActiveSection] = useState<string>('');
@@ -34,13 +35,18 @@ export const useScrollSpy = (sectionIds: string[], offset: number = 100) => {
 }
 
 // Smooth scroll to a section
-export const scrollToSection = (sectionId: string, offset: number = 80) => {
+export const scrollToSection = (sectionId: string, offset: number = 10) => {
   const section = document.getElementById(sectionId);
   if (section) {
-    const top = section.offsetTop - offset;
-    window.scrollTo({
-      top,
-      behavior: "smooth"
-    })
+    const targetTop = section.getBoundingClientRect().top + window.scrollY - offset;
+    
+    animate(window.scrollY, targetTop, {
+      type: "spring",
+      bounce: 0.3,
+      duration: 0.8,
+      onUpdate: (latest) => {
+        window.scrollTo(0, latest);
+      }
+    });
   }
 }

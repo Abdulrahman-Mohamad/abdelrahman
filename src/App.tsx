@@ -1,3 +1,4 @@
+import ScrollToTop from "./components/ui/ScrollToTop";
 import Footer from "./components/layout/Footer";
 import Navbar from "./components/layout/Navbar";
 import About from "./components/sections/About";
@@ -19,10 +20,11 @@ const App = () => {
           <Skills />
           <Projects />
           <Services />
-          <Testimonials/>
-          <Contact/>
+          <Testimonials />
+          <Contact />
         </main>
-        <Footer/>
+        <ScrollToTop />
+        <Footer />
       </div>
     </>
   );

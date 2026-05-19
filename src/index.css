@@ -19,7 +19,7 @@
     -moz-osx-font-smoothing: grayscale;
     background-color: #000000;
     color: #FFFFFF;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
   }
 
   /* custom scrollbar */
