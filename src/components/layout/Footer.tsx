@@ -81,7 +81,7 @@ const Footer = () => {
                 </p>
                 <div className="flex flex-wrap gap-3">
                   {Object.entries(SOCIAL_LINKS).map(([platform, url]) => {
-                    const Icon = socialIcons[platform];
+                    const Icon = socialIcons[platform as keyof typeof socialIcons];
                     return Icon ? (
                       <a
                         key={platform}
