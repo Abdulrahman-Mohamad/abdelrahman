@@ -31,13 +31,13 @@ const Hero = () => {
               </Fadein>
               <Fadein delay={100}>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal text-white mb-6 leading-tight">
-                  Full Stack Developer
+                  Senior Frontend Developer
                 </h1>
               </Fadein>
               <Fadein delay={200}>
                 <p className="text-lg text-white/70 max-w-[550px] mb-8">
                   Building modern, scalable web applications. Transforming ideas
-                  into exceptional degistal experience
+                  into exceptional digital experience
                 </p>
               </Fadein>
               <Fadein delay={300}>

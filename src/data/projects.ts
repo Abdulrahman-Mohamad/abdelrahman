@@ -26,16 +26,16 @@ export const projects: Project[] = [
     githubUrl: null
   },
   {
-    id: 2,
-    title: "Mac Portfolio",
-    description: "An interactive personal portfolio replicating the macOS desktop experience in the browser.",
-    image: "/projects/mac-portfolio.png",
-    category: "Web Apps",
-    technologies: ["React", "TailwindCSS", "JavaScript", "GSAP", "Zustand"],
-    metrics: "Interactive macOS Simulation",
-    demoUrl: "https://mac-portfolio-jade.vercel.app/",
-    githubUrl: "https://github.com/Abdulrahman-Mohamad/mac-portfolio.git"
-  },
+  id: 2,
+  title: "ShootPlus",
+  description: "An interactive sports gaming platform featuring trivia, match predictions with live data, and a Unity-based penalty shootout mini-game.",
+  image: "/projects/shootplus.png",
+  category: "Web Apps",
+  technologies: ["Next.js", "TailwindCSS", "TypeScript", "Unity", "Framer Motion"],
+  metrics: "Interactive Sports Gaming Platform with Payment Integration",
+  demoUrl: "https://shootpluspl.com/",
+  githubUrl: null
+},
   {
     id: 3,
     title: "SPORTS HUB",

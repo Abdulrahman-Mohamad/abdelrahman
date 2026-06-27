@@ -35,7 +35,7 @@ const About = () => {
                   <div className="inline-flex items-center gap-2.5 px-5 py-2.5 border border-primary/30 bg-primary/10 rounded-full w-fit">
                     <Code2 className="size-4 text-primary" />
                     <span className="text-sm text-primary font-medium">
-                      Full-Stack Developer
+                      Senior Frontend Developer
                     </span>
                     <Sparkles className="size-4 text-primary" />
                   </div>
@@ -100,7 +100,7 @@ const About = () => {
                         </h3>
                         <p className="text-sm text-white/70 leading-relaxed">
                           Specialized in building scalable web application with
-                          modern technologues and best pratices.
+                          modern technologies and best practices.
                         </p>
                       </div>
                     </div>
@@ -132,7 +132,7 @@ const About = () => {
                       Performance
                     </h3>
                     <p className="text-sm text-white/70 leading-relaxed">
-                      Optimaizing for speed and effciency in every project.
+                      Optimizing for speed and efficiency in every project.
                     </p>
                   </div>
                 </div>
@@ -146,7 +146,7 @@ const About = () => {
                           100%
                         </div>
                         <div className="text-xs text-white/60">
-                          Client Stisfaction
+                          Client Satisfaction
                         </div>
                       </div>
                       <div>

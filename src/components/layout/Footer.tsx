@@ -105,12 +105,12 @@ const Footer = () => {
               <div className="flex flex-col md:flex-row items-center justify-center gap-4">
                 <p className="text-white/50 text-sm">
                   &copy; {new Date().getFullYear()} {PERSONAL_INFO.name}. All
-                  rights reseved.
+                  rights reserved.
                 </p>
                 <p className="flex items-center gap-2 text-white/50 text-sm">
                   Built with{" "}
                   <Heart className="size-4 text-primary fill-primary animate-pulse" />{" "}
-                  using React & Tailwind Css
+                  using React & Tailwind CSS
                 </p>
               </div>
             </div>

@@ -19,7 +19,7 @@ export const skills: Skill[] = [
     name: "JavaScript",
     icon: "FileCode",
     level: "Expert",
-    experience: "6+ years"
+    experience: "5+ years"
   },
   {
     id: 3,
@@ -54,7 +54,7 @@ export const skills: Skill[] = [
     name: "Git & GitHub",
     icon: "GitBranch",
     level: "Advanced",
-    experience: "6+ years"
+    experience: "5+ years"
   },
   {
     id: 8,
@@ -75,7 +75,7 @@ export const skills: Skill[] = [
     name: "Responsive Design",
     icon: "Smartphone",
     level: "Expert",
-    experience: "6+ years"
+    experience: "5+ years"
   },
   {
     id: 11,

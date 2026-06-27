@@ -7,7 +7,7 @@ import Hero from "./components/sections/Hero";
 import Projects from "./components/sections/Projects";
 import Services from "./components/sections/Services";
 import Skills from "./components/sections/Skills";
-import Testimonials from "./components/sections/Testimonials";
+// import Testimonials from "./components/sections/Testimonials";
 
 const App = () => {
   return (
@@ -20,7 +20,7 @@ const App = () => {
           <Skills />
           <Projects />
           <Services />
-          <Testimonials />
+          {/* <Testimonials /> */}
           <Contact />
         </main>
         <ScrollToTop />

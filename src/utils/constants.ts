@@ -1,6 +1,6 @@
 export const PERSONAL_INFO = {
   name: "AbdelRahman",
-  title: "Fullstack Developer",
+  title: "Senior Frontend Developer",
   email: "abd.rahman.mohamad.93@gmail.com",
   location: "Egypt | 10th Of Ramadan",
   tagline: "Building Seamless Web Experiences with MERN & Next.js",
@@ -8,7 +8,7 @@ export const PERSONAL_INFO = {
   bio: [
     "I'm a passionate React developer with over 5 years of experience building scalable, performant web applications. I specialize in creating intuitive user interfaces that combine beautiful design with exceptional functionality.",
     "My expertise spans the entire frontend ecosystem, from React and Next.js to TypeScript and modern CSS frameworks. I'm committed to writing clean, maintainable code and staying current with the latest web technologies.",
-    "When I'm not coding, you'll find me contributing to open-source projects, writing technical articles, or exploring new design trends."
+    // "When I'm not coding, you'll find me contributing to open-source projects, writing technical articles, or exploring new design trends."
   ]
 }
 
@@ -19,14 +19,14 @@ export const SOCIAL_LINKS = {
 }
 
 export const STATS = [
-  { label: "Years of Experience", value: "6+" },
+  { label: "Years of Experience", value: "5+" },
   { label: "Projects Completed", value: "40+" },
   { label: "Technologies", value: "20+" },
   { label: "Client Satisfaction", value: "98%" },
 ]
 
 export const ABOUT_STATS = [
-  { label: "Happy Clients", value: "40" },
+  { label: "Happy Clients", value: "9" },
   { label: "Code Commits", value: "2.5K+" },
   { label: "Technologies", value: "20+" },
   // { label: "Client Satisfaction", value: "98%" },
