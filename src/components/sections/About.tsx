@@ -74,13 +74,15 @@ const About = () => {
                 </div>
               </Fadein>
               <Fadein delay={400}>
-                <button
-                  onClick={() => window.open(PERSONAL_INFO.resume, "_blank")}
+                <a
+                  href={PERSONAL_INFO.resume}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 bg-white hover:bg-white/90 text-black rounded-full px-8 py-4 text-base font-medium transition-all duration-300 w-fit group cursor-pointer"
                 >
                   <Download className="size-5 group-hover:translate-y-0.5 transition-transform duration-300" />
                   Download Resume
-                </button>
+                </a>
               </Fadein>
             </div>
 
