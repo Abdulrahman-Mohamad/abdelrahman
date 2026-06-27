@@ -4,7 +4,7 @@ export const PERSONAL_INFO = {
   email: "abd.rahman.mohamad.93@gmail.com",
   location: "Egypt | 10th Of Ramadan",
   tagline: "Building Seamless Web Experiences with MERN & Next.js",
-  resume: "../assets/Resume.pdf",
+  resume: "../assets/AbdelRahman_Resume.pdf",
   bio: [
     "I'm a passionate React developer with over 5 years of experience building scalable, performant web applications. I specialize in creating intuitive user interfaces that combine beautiful design with exceptional functionality.",
     "My expertise spans the entire frontend ecosystem, from React and Next.js to TypeScript and modern CSS frameworks. I'm committed to writing clean, maintainable code and staying current with the latest web technologies.",
@@ -32,10 +32,10 @@ export const ABOUT_STATS = [
   // { label: "Client Satisfaction", value: "98%" },
 ]
 
-export const NAV_LINKS =[
-  {id:"about" , label:"About"},
-  {id:"skills" , label:"Skills"},
-  {id:"projects" , label:"Projects"},
-  {id:"services" , label:"Services"},
-  {id:"contact" , label:"Contact"},
+export const NAV_LINKS = [
+  { id: "about", label: "About" },
+  { id: "skills", label: "Skills" },
+  { id: "projects", label: "Projects" },
+  { id: "services", label: "Services" },
+  { id: "contact", label: "Contact" },
 ]
